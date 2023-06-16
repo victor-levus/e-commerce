@@ -1,0 +1,111 @@
+@import "./styles/ResetCSS.scss";
+@import "./styles/Variables.scss";
+@import "./styles/ProductPage.scss";
+@import "./styles/Footer.scss";
+
+body {
+  background-color: rgba(240, 248, 255, 0.445);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.sub-header {
+  font-size: 1.4rem;
+  color: darkred;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.p-bg {
+  background-color: white;
+}
+
+.logo---brand {
+  width: fit-content;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  justify-items: center;
+  color: $button-bg;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: $red;
+  }
+
+  .bi-alexa {
+    font-size: 2.5rem;
+  }
+  .logo-text {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    font-size: 1.8rem;
+  }
+}
+
+.homepage {
+  padding: 1rem;
+}
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 850px;
+  margin: 0 auto;
+}
+.search-input input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(139, 0, 0, 0.24);
+  font-size: 1.2rem;
+  outline: none;
+  text-align: center;
+}
+.search-input input:focus {
+  outline: 2px solid rgba(139, 0, 0, 0.459);
+  border-radius: 50px;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.card--box {
+  display: block;
+  width: 240px;
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  .image {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+    }
+  }
+  .title {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    height: 80px;
+  }
+  .price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: end;
+    color: darkred;
+  }
+}

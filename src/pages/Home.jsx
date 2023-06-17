@@ -5,9 +5,10 @@ import Cards from "../components/Cards";
 import { ProductContext } from "../context/ProductContext";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
+import Loading from "../components/Loading";
 
 const HomePage = () => {
-  const { data } = useContext(ProductContext);
+  const { data, categories } = useContext(ProductContext);
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
@@ -31,15 +32,38 @@ const HomePage = () => {
     setProductData(newData);
   };
 
-  if (data.length === 0) return <h2>Loading...</h2>;
+  const filterByCollection = (e) => {
+    const filterByCategory = _.filter(data, function (o) {
+      return o.category === e.target.innerHTML.toLowerCase();
+    });
+
+    setProductData(filterByCategory);
+    console.log(filterByCategory);
+  };
+
+  if (data.length === 0) return <Loading />;
+
   return (
     <>
-      <NavBar />
-      <div className="homepage">
-        <SearchInput filterData={filterData} />
-        <Cards productData={productData} />
+      <div className="upper-page">
+        <NavBar
+          categories={categories}
+          onClick={(c) => filterByCollection(c)}
+        />
+        <div className="homepage pt-5">
+          <SearchInput onChange={filterData} />
+          {data.length === 0 ? (
+            <Loading />
+          ) : (
+            <>
+              <Cards productData={productData} />
+            </>
+          )}
+        </div>
       </div>
-      <Footer />
+      <div className="footer--cover">
+        <Footer />
+      </div>
     </>
   );
 };

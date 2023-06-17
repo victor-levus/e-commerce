@@ -6,8 +6,10 @@ function Footer(props) {
     <div id="footer---container">
       <div className="app---footer">
         <div className="footer---bottom first">
-          <AppLogo />
-          <p>
+          <a href="/">
+            <AppLogo />
+          </a>
+          <p className="mt-4">
             Learning Academy provides you with quality and affordable learning
             programmes rangin from IT, Leadership, Management, Telecoms,
             Software Development, Networking, Digital Marketing and more.

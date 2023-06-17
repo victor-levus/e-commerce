@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import _ from "lodash";
 
@@ -9,22 +9,29 @@ import NavBar from "../components/NavBar";
 
 const ProductPage = () => {
   const params = useParams();
-  const { data } = useContext(ProductContext);
+  const { data, categories } = useContext(ProductContext);
+  const [qtyNumber, setQtyNumber] = useState(1);
 
   const product = _.filter(data, function (o) {
     return o.id === parseInt(params.id);
   })[0];
 
+  const decreaseQty = () => {
+    return setQtyNumber(parseInt(qtyNumber) - 1);
+  };
+
+  const increaseQty = () => {
+    return setQtyNumber(parseInt(qtyNumber) + 1);
+  };
+
   if (!data) return <h3>Loading...</h3>;
 
   if (data.length === 0) return null;
 
-  //   const
-
   return (
     <>
-      <NavBar />
-      <div className="product-page">
+      <NavBar categories={categories} cl />
+      <div className="product-page konfig">
         <div className="page-container">
           <div className="product-detail">
             <div className="image-container">
@@ -45,7 +52,21 @@ const ProductPage = () => {
               <div className="qty-selector">
                 <p>Quantity:</p>
                 <div className="qty-btn">
-                  <div>-</div> <div>2</div> <div>+</div>
+                  <button
+                    disabled={qtyNumber <= 1}
+                    onClick={decreaseQty}
+                    className="qty-btn- borderL"
+                  >
+                    -
+                  </button>
+                  <div className="qty-figure borderL">{qtyNumber}</div>
+                  <button
+                    disabled={qtyNumber >= 20}
+                    onClick={increaseQty}
+                    className="qty-btn+ borderL"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
               <div className="btn-container">
@@ -75,7 +96,9 @@ const ProductPage = () => {
         </div>
       </div>
 
-      <Footer />
+      <div className="footer--cover">
+        <Footer />
+      </div>
     </>
   );
 };

@@ -40,11 +40,20 @@
           .qty-btn {
             display: flex;
             margin-left: 1rem;
-            div {
+            input[type="number"]::-webkit-outer-spin-button,
+            input[type="number"]::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            input[type="number"] {
+              -moz-appearance: textfield;
+            }
+            .borderL {
               border: 1px solid lightgray;
               padding: 0.5rem 0.8rem;
               margin: 0;
               cursor: pointer;
+              width: 45px;
             }
           }
         }

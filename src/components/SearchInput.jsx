@@ -1,9 +1,9 @@
 import React from "react";
 
-const SearchInput = ({ filterData }) => {
+const SearchInput = ({ onChange }) => {
   return (
     <div className="search-input">
-      <input onChange={filterData} placeholder="Search Products" type="text" />
+      <input onChange={onChange} placeholder="Search Products" type="text" />
     </div>
   );
 };

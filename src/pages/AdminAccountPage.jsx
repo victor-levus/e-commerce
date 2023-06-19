@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import AppTable from "../components/AppTable";
 import Loading from "../components/Loading";
+import AppModal from "../components/AppModal";
 
 const AdminAccountPage = () => {
   const {
@@ -22,6 +23,7 @@ const AdminAccountPage = () => {
   return (
     <div id="admin--dashboard">
       <NavBar />
+      <AppModal title={"Add Product"} body={"Product body"} />
       <div className="admin---body">
         <div className="row">
           <div className="col-1 side--menu">
@@ -68,8 +70,10 @@ const AdminAccountPage = () => {
               </Link>
             </div>
           </div>
+
           <div className="col-8 main--screen">
             <h1 className="h1">Admin DashBoard</h1>
+
             <div className="dashboard">
               {products.length === 0 ? (
                 <Loading />
@@ -77,7 +81,15 @@ const AdminAccountPage = () => {
                 <>
                   {menuSelect === "products" ? (
                     <>
-                      <button className="btn btn-secondary">Add Product</button>
+                      <div className="btn--cover">
+                        <button
+                          className="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        >
+                          Add Product
+                        </button>
+                      </div>
                       <AppTable
                         a1="id"
                         b1="title"
@@ -87,17 +99,50 @@ const AdminAccountPage = () => {
                       />
                     </>
                   ) : menuSelect === "users" ? (
-                    <AppTable
-                      a1="id"
-                      b1="username"
-                      c1="phone"
-                      d1="email"
-                      data={userData}
-                    />
+                    <>
+                      <div className="btn--cover">
+                        <button
+                          className="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        >
+                          Add User
+                        </button>
+                      </div>
+                      <AppTable
+                        a1="id"
+                        b1="username"
+                        c1="phone"
+                        d1="email"
+                        data={userData}
+                      />
+                    </>
                   ) : menuSelect === "carts" ? (
-                    <AppTable a1="id" b1="date" c1="userId" data={cartData} />
+                    <>
+                      <div className="btn--cover">
+                        <button
+                          className="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        >
+                          Create Cart
+                        </button>
+                      </div>
+                      <AppTable a1="id" b1="date" c1="userId" data={cartData} />{" "}
+                    </>
                   ) : menuSelect === "categories" ? (
-                    <AppTable a1="id" b1="category" data={categories} />
+                    <>
+                      <div className="btn--cover">
+                        <button
+                          className="btn btn-secondary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        >
+                          Add Category
+                        </button>
+                      </div>
+                      <AppTable a1="id" b1="category" data={categories} />{" "}
+                    </>
                   ) : (
                     <h4 className="p-3">Select menu list to show</h4>
                   )}

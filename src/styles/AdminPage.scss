@@ -31,8 +31,10 @@
         padding: 1rem 1rem 1rem 1rem;
 
         .dashboard {
-          .btn {
-            text-align: left;
+          .btn--cover {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
           }
         }
       }

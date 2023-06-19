@@ -6,9 +6,12 @@ import ProductPage from "./pages/ProductPage";
 import { ProductContext } from "./context/ProductContext";
 import axios from "axios";
 import ProductByCategoryPage from "./pages/ProductByCategoryPage";
+import AdminAccountPage from "./pages/AdminAccountPage";
 
 const App = () => {
-  const [data, setData] = useState([]);
+  const [productData, setProductData] = useState([]);
+  const [userData, setUserData] = useState([]);
+  const [cartData, setCartData] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -17,15 +20,29 @@ const App = () => {
 
   const getData = async () => {
     try {
-      const options = {
+      const productOptions = {
         method: "GET",
         url: "https://fakestoreapi.com/products",
       };
+      const userOptions = {
+        method: "GET",
+        url: "https://fakestoreapi.com/users",
+      };
+      const cartOptions = {
+        method: "GET",
+        url: "https://fakestoreapi.com/carts",
+      };
 
-      const response = await axios.request(options);
-      setData(response.data);
+      const productResponse = await axios.request(productOptions);
+      setProductData(productResponse.data);
 
-      const allCategories = response.data.reduce(
+      const userResponse = await axios.request(userOptions);
+      setUserData(userResponse.data);
+
+      const cartResponse = await axios.request(cartOptions);
+      setCartData(cartResponse.data);
+
+      const allCategories = productResponse.data.reduce(
         (acc, product) => [...acc, product.category],
         []
       );
@@ -43,7 +60,9 @@ const App = () => {
 
   return (
     <>
-      <ProductContext.Provider value={{ data, categories, setData }}>
+      <ProductContext.Provider
+        value={{ productData, categories, userData, cartData }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -52,6 +71,7 @@ const App = () => {
               path="/products/categories/:category"
               element={<ProductByCategoryPage />}
             />
+            <Route path="/account/user" element={<AdminAccountPage />} />
           </Routes>
         </BrowserRouter>
       </ProductContext.Provider>

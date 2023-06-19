@@ -33,12 +33,7 @@ const NavBar = ({ categories = [], onClick }) => {
                 </span>
                 <ul className="dropdown-menu">
                   {categories.map((c) => (
-                    <li
-                      //   onClick={(e) => onClick(e)}
-
-                      className="cursor-p"
-                      key={c}
-                    >
+                    <li className="cursor-p" key={c}>
                       <a
                         href={`/products/categories/${c}`}
                         className="dropdown-item py-3"
@@ -53,8 +48,8 @@ const NavBar = ({ categories = [], onClick }) => {
               {/* <a className="nav-link" href="#">
                 Category
               </a> */}
-              <a className="nav-link" href="#">
-                {/* Category */}
+              <a className="nav-link" href="/account/user">
+                Admin Dashboard
               </a>
             </div>
           </div>

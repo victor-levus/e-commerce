@@ -1,0 +1,55 @@
+#admin--dashboard {
+  .admin---body {
+    h1 {
+    }
+    .row {
+      .side--menu {
+        // background-color: $primary-bg2;
+        height: 100%;
+        width: 180px;
+        padding: 1rem 0;
+        .menu--list {
+          display: flex;
+          flex-direction: column;
+          .menus {
+            padding: 1rem 0 0 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+          }
+          .menu--link {
+            margin-bottom: 0.2rem;
+            padding: 1rem 0 1rem 1.2rem;
+            transition: all 0.3s ease-in-out;
+            &:hover {
+              background-color: $grayL;
+              color: inherit;
+            }
+          }
+        }
+      }
+      .main--screen {
+        padding: 1rem 1rem 1rem 1rem;
+
+        .dashboard {
+          .btn {
+            text-align: left;
+          }
+        }
+      }
+    }
+  }
+
+  th {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  td {
+    min-width: 180px;
+    min-height: 185px;
+  }
+
+  .-active {
+    background-color: $grayL;
+  }
+}

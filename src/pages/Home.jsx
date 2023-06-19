@@ -6,9 +6,10 @@ import { ProductContext } from "../context/ProductContext";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import Loading from "../components/Loading";
+import SimpleCard from "../components/SimpleCard";
 
 const HomePage = () => {
-  const { data, categories } = useContext(ProductContext);
+  const { productData: data, categories } = useContext(ProductContext);
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
@@ -50,6 +51,12 @@ const HomePage = () => {
           categories={categories}
           onClick={(c) => filterByCollection(c)}
         />
+        <div className="category--list">
+          {categories.map((o) => (
+            // <h1>ada</h1>
+            <SimpleCard text={o} key={o} />
+          ))}
+        </div>
         <div className="homepage pt-5">
           <SearchInput onChange={filterData} />
           {data.length === 0 ? (

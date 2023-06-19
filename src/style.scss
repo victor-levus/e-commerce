@@ -2,6 +2,7 @@
 @import "./styles/Variables.scss";
 @import "./styles/ProductPage.scss";
 @import "./styles/Footer.scss";
+@import "./styles/AdminPage.scss";
 
 body {
   // font-family: 'Comfortaa', cursive;
@@ -114,6 +115,14 @@ a {
   gap: 1rem;
   justify-content: center;
   padding: 2rem 0;
+}
+
+.category--list {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card--box {

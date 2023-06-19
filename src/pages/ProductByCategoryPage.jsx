@@ -9,7 +9,7 @@ import Loading from "../components/Loading";
 
 const ProductByCategoryPage = () => {
   const params = useParams();
-  const { data, categories } = useContext(ProductContext);
+  const { productData: data, categories } = useContext(ProductContext);
   const [categoryData, setCategoryData] = useState([]);
   const [productData, setProductData] = useState([]);
   const [searchInput, setSearchInput] = useState("");

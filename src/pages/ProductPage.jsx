@@ -9,7 +9,7 @@ import NavBar from "../components/NavBar";
 
 const ProductPage = () => {
   const params = useParams();
-  const { data, categories } = useContext(ProductContext);
+  const { productData: data, categories } = useContext(ProductContext);
   const [qtyNumber, setQtyNumber] = useState(1);
 
   const product = _.filter(data, function (o) {

@@ -7,6 +7,7 @@ import { ProductContext } from "./context/ProductContext";
 import axios from "axios";
 import ProductByCategoryPage from "./pages/ProductByCategoryPage";
 import AdminAccountPage from "./pages/AdminAccountPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   const [productData, setProductData] = useState([]);
@@ -64,6 +65,7 @@ const App = () => {
         value={{ productData, categories, userData, cartData }}
       >
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/products/:id" element={<ProductPage />}></Route>

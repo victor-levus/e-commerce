@@ -5,6 +5,10 @@ import { ProductContext } from "../context/ProductContext";
 import AppTable from "../components/AppTable";
 import Loading from "../components/Loading";
 import AppModal from "../components/AppModal";
+import ProductForm from "../components/forms/ProductForm";
+import UserForm from "../components/forms/UserForm";
+import CategoryForm from "../components/forms/CategoryForm";
+import CartForm from "../components/forms/CartForm";
 
 const AdminAccountPage = () => {
   const {
@@ -18,6 +22,11 @@ const AdminAccountPage = () => {
   const selectMenu = (e) => {
     const name = e.target.name;
     setMenuSelect(name);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(e);
   };
 
   return (
@@ -35,7 +44,19 @@ const AdminAccountPage = () => {
             ? "Create Cart"
             : ""
         }
-        body={"Product body"}
+        body={
+          menuSelect === "products" ? (
+            <ProductForm onSubmit={handleSubmit} />
+          ) : menuSelect === "users" ? (
+            <UserForm onSubmit={handleSubmit} />
+          ) : menuSelect === "categories" ? (
+            <CategoryForm onSubmit={handleSubmit} />
+          ) : menuSelect === "carts" ? (
+            <CartForm onSubmit={handleSubmit} />
+          ) : (
+            ""
+          )
+        }
       />
       <div className="admin---body">
         <div className="row">

@@ -23,7 +23,20 @@ const AdminAccountPage = () => {
   return (
     <div id="admin--dashboard">
       <NavBar />
-      <AppModal title={"Add Product"} body={"Product body"} />
+      <AppModal
+        title={
+          menuSelect === "products"
+            ? "Add Product"
+            : menuSelect === "users"
+            ? "Add New User"
+            : menuSelect === "categories"
+            ? "Add Category"
+            : menuSelect === "carts"
+            ? "Create Cart"
+            : ""
+        }
+        body={"Product body"}
+      />
       <div className="admin---body">
         <div className="row">
           <div className="col-1 side--menu">

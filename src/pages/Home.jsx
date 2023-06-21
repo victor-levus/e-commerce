@@ -51,12 +51,16 @@ const HomePage = () => {
           categories={categories}
           onClick={(c) => filterByCollection(c)}
         />
-        <div className="category--list">
-          {categories.map((o) => (
-            // <h1>ada</h1>
-            <SimpleCard text={o} key={o} />
-          ))}
-        </div>
+        {categories.length === 0 ? (
+          <Loading />
+        ) : (
+          <div className="category--list">
+            {categories.map((o) => (
+              // <h1>ada</h1>
+              <SimpleCard text={o} key={o} />
+            ))}
+          </div>
+        )}
         <div className="homepage pt-5">
           <SearchInput onChange={filterData} />
           {data.length === 0 ? (
